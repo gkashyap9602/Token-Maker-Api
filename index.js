@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 	next();
  });
  
- app.use(cors({origin:"*"}));
+ app.use(cors({origin:["http://localhost:3000","https://tokenmaker.block-brew.com"]}));
   app.use('/api/v1', route);
   
   app.use(middleware.errCreate)

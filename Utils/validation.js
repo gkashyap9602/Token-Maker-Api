@@ -18,7 +18,7 @@ newContractValidation = joi.object({
     noCopyrightLink:joi.bool(),
     network:joi.string(),
     agreement:joi.bool(),
-    commissionFee:joi.string()|| null ||joi.number(),
+    commissionFee:joi.any,
 
 
 })

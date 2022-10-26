@@ -105,10 +105,10 @@ async function CreateAndCompile(req, res, next) {
     }
   } catch (error) {
     console.log(error, "errrr");
-    res.status(error.statusCode || 400).json({
-      message: error.message ? error.message : error,
-      statusCode: error.statusCode || 400,
-    });
-    // next(error)
+    // res.status(error.statusCode || 400).json({
+    //   message: error.message ? error.message : error,
+    //   statusCode: error.statusCode || 400,
+    // });
+    next(error)
   }
 }

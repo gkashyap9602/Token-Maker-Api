@@ -12,17 +12,8 @@ function errCreate(req, res, next) {
 
 function routeErr(err, req, res, next) {
   console.log(err, "err");
-  if (err.message == "route not found") {
-    res.status(404).json({
-      message: err.message,
-      statusCode: 404,
-    });
-  }else{
-    res.status(400).json({
-      message:
-        "Check Given Parameters Data Type or Node Module Path For OpenZeppelin Librarry ",
-      statusCode: 400,
-      error: err.message ? err.message : err,
-    });
-  }
+  res.status(err.statusCode || 400).json({
+    message: err.message ? err.message : err,
+    statusCode: err.statusCode || 400,
+  });
 }

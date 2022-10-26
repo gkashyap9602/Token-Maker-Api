@@ -77,6 +77,6 @@ async function CreateAndCompile(req, res ,next ) {
     });
   } catch (error) {
     console.log(error, "errrr");
-    // next(error)
+    next(error)
   }
 }

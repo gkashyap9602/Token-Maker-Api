@@ -9,6 +9,18 @@ newContractValidation = joi.object({
     burnable : joi.bool().required(),
     mintable : joi.bool().required(),
     recoverable : joi.bool().required(),
+    tokenType : joi.string().required(),
+    decimals: joi.number().min(1).required(),
+    supplyType:joi.string(),
+    maximumSupply:joi.number(),
+    conforms:joi.bool(),
+    verified:joi.bool(),
+    noCopyrightLink:joi.bool(),
+    network:joi.string(),
+    agreement:joi.bool(),
+    commissionFee:joi.number(),
+
+
 })
 
 module.exports = {newContractValidation}

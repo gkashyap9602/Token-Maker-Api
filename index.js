@@ -1,6 +1,6 @@
 const express = require('express')
 // const connection = require('./connection/connection')
-const middleware = require("./middleware")
+const middleware = require("./Utils/middleware")
 const config = require('./config/config')
 const route = require('./MainRoutes')
 const bodyParser = require('body-parser')

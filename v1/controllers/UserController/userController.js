@@ -97,20 +97,20 @@ async function CreateAndCompile(req, res, next) {
     const contractFile = tempFile.contracts["NewToken.sol"][finalTokenName]
     // console.log(contractFile, "contractFilee ");
 
-    // if (contractFile.abi && contractFile.evm.bytecode.object) {
-    //   const contractData = {
-    //     abi: contractFile.abi,
-    //     bytecode: contractFile.evm.bytecode.object,
-    //   };
+    if (contractFile.abi && contractFile.evm.bytecode.object) {
+      const contractData = {
+        abi: contractFile.abi,
+        bytecode: contractFile.evm.bytecode.object,
+      };
 
       res.status(201).json({
         message: "Contract Compile Successfully ",
         statusCode: 201,
-        result: contractFile,
+        result: contractData,
       });
-    // }else{
-    //   throw new error_Object("Contract Compilation Failed ",http.StatusCodes.EXPECTATION_FAILED)
-    // }
+    }else{
+      throw new error_Object("Contract Compilation Failed ",http.StatusCodes.EXPECTATION_FAILED)
+    }
   } catch (error) {
     console.log(error, "errrr");
     // res.status(error.statusCode || 400).json({

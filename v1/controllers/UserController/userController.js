@@ -31,14 +31,19 @@ async function CreateAndCompile(req, res, next) {
     console.log(formData, "reqbody");
     const tokenName = formData.tokenName.trim().split(" ")
     console.log(tokenName,"token name slice");
+    let finalTokenName
    if(tokenName.length >1){
     const tname1 = tokenName[0].charAt(0).toUpperCase() + tokenName[0].slice(1)
     const tname2 = tokenName[1].charAt(0).toUpperCase() + tokenName[1].slice(1)
     console.log(tname1,tname2,"tname1 and tname2");
-    const finalTokenName = tname1+tname2
-    console.log(finalTokenName,"final token name");
+    finalTokenName = tname1+tname2
+   ;
+   }else{
+    finalTokenName = tokenName[0].charAt(0).toUpperCase() + tokenName[0].slice(1)
+
    }
-   const finalTokenName = tokenName[0].charAt(0).toUpperCase() + tokenName[0].slice(1)
+
+   console.log(finalTokenName,"final token name")
     // const finalTokenName =
     // tokenName.charAt(0).toUpperCase() + tokenName.slice(1);
     // Object.assign(formData, { tokenName: finalTokenName });

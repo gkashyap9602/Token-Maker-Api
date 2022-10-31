@@ -28,12 +28,20 @@ function findImports(relativePath) {
 async function CreateAndCompile(req, res, next) {
   try {
     const formData = req.body;
-    // console.log(formData, "reqbody");
-    const tokenName = formData.tokenName.trim().split(" ").join("");
-    const finalTokenName =
-    tokenName.charAt(0).toUpperCase() + tokenName.slice(1);
-    Object.assign(formData, { tokenName: finalTokenName });
+    console.log(formData, "reqbody");
+    const tokenName = formData.tokenName.trim().split(" ")
+    console.log(tokenName,"token name slice");
+
+    const tname1 = tokenName[0].charAt(0).toUpperCase() + tokenName[0].slice(1)
+    const tname2 = tokenName[1].charAt(0).toUpperCase() + tokenName[1].slice(1)
+    console.log(tname1,tname2,"tname1 and tname2");
+    const finalTokenName = tname1+tname2
+    console.log(finalTokenName,"final token name");
+    // const finalTokenName =
+    // tokenName.charAt(0).toUpperCase() + tokenName.slice(1);
+    // Object.assign(formData, { tokenName: finalTokenName });
     // console.log(formData, "formdtata after capital");
+    // console.log(finalTokenName,"final token");
     const options = {
       errors: {
         wrap: {
@@ -86,23 +94,23 @@ async function CreateAndCompile(req, res, next) {
     );
 
     // console.log(tempFile, "tempfilee");
-    const contractFile = tempFile.contracts["NewToken.sol"][formData.tokenName];
+    const contractFile = tempFile.contracts["NewToken.sol"][finalTokenName]
     // console.log(contractFile, "contractFilee ");
 
-    if (contractFile.abi && contractFile.evm.bytecode.object) {
-      const contractData = {
-        abi: contractFile.abi,
-        bytecode: contractFile.evm.bytecode.object,
-      };
+    // if (contractFile.abi && contractFile.evm.bytecode.object) {
+    //   const contractData = {
+    //     abi: contractFile.abi,
+    //     bytecode: contractFile.evm.bytecode.object,
+    //   };
 
       res.status(201).json({
         message: "Contract Compile Successfully ",
         statusCode: 201,
-        result: contractData,
+        result: contractFile,
       });
-    }else{
-      throw new error_Object("Contract Compilation Failed ",http.StatusCodes.EXPECTATION_FAILED)
-    }
+    // }else{
+    //   throw new error_Object("Contract Compilation Failed ",http.StatusCodes.EXPECTATION_FAILED)
+    // }
   } catch (error) {
     console.log(error, "errrr");
     // res.status(error.statusCode || 400).json({

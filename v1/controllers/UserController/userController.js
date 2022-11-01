@@ -37,7 +37,7 @@ async function CreateAndCompile(req, res, next) {
     const tname2 = tokenName[1].charAt(0).toUpperCase() + tokenName[1].slice(1)
     console.log(tname1,tname2,"tname1 and tname2");
     finalTokenName = tname1+tname2
-   ;
+   
    }else{
     finalTokenName = tokenName[0].charAt(0).toUpperCase() + tokenName[0].slice(1)
 
